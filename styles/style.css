@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. المتغيرات والتهيئة العامة (Variables & Base Styles)
+   ========================================================================== */
 :root {
   --primary: #D4AF37;
   --secondary: #C5A028;
@@ -15,6 +18,7 @@
 
 html {
   direction: rtl;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -24,33 +28,34 @@ body {
   background-color: var(--light);
 }
 
-/* Header styles */
+/* ==========================================================================
+   2. الهيدر والقائمة (Header & Navigation)
+   ========================================================================== */
 .header {
   background: var(--gold-gradient);
   color: white;
   padding: 1rem 2rem;
   position: fixed;
   width: 100%;
+  top: 0;
+  left: 0;
   z-index: 100;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-.nav-parent{
+
+.nav-parent {
   display: flex;
   justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .nav {
   flex: 1;
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.logo-img{
-  height: 60px;
-  
 }
 
 .logo {
@@ -58,13 +63,29 @@ body {
   font-weight: bold;
   color: white;
   display: flex;
+  align-items: center;
   gap: 10px;
+}
+
+.logo-img {
+  height: 60px;
+  width: auto;
+}
+
+.menu-toggle {
+  display: flex;
+  align-items: center;
 }
 
 .menu-toggle img {
   height: 40px;
   display: none;
   cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
 }
 
 .nav-links a {
@@ -84,24 +105,24 @@ body {
   color: var(--primary) !important;
   padding: 0.5rem 1.5rem;
   border-radius: 25px;
+  font-weight: bold;
 }
 
-
-
-/* Hero section */
+/* ==========================================================================
+   3. قسم الواجهة الرئيسية (Hero Section)
+   ========================================================================== */
 .hero {
-    aspect-ratio: 2 / 1; /* keeps 2:1 ratio */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6rem 2rem 2rem;
-  background-image: url("/app.jpg");
-  background-position: center center ;
-  background-size: cover;
-  background-repeat:no-repeat ;
+  padding: 10rem 2rem 5rem; /* مساحة علوية كافية لعدم التداخل مع الهيدر */
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 4rem;
 }
 
 .hero-content {
+  flex: 1;
   max-width: 600px;
 }
 
@@ -129,7 +150,8 @@ body {
   text-decoration: none;
   border-radius: 30px;
   font-weight: bold;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
 }
 
 .button.primary {
@@ -145,20 +167,39 @@ body {
 
 .button:hover {
   transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
 }
 
+/* حاوية الصورة الفردية المصلحة لجيت هاب */
 .hero-image {
+  flex: 1;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.hero-image img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 20px;
+  object-fit: contain;
+}
+
+/* كارت الأسعار العائم فوق الصورة بدقة */
 .gold-stats {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
   background: white;
   padding: 1rem;
   border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
   gap: 1rem;
+  z-index: 2;
 }
 
 .live-price {
@@ -167,9 +208,11 @@ body {
   color: var(--primary);
 }
 
-/* Features section */
+/* ==========================================================================
+   4. قسم المميزات والخدمات (Features & Services)
+   ========================================================================== */
 .features {
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
   background-color: white;
 }
 
@@ -180,7 +223,7 @@ body {
   color: var(--dark);
 }
 
-.features-grid {
+.features-grid, .services-grid {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
@@ -193,12 +236,13 @@ body {
   border-radius: 15px;
   background-color: var(--light);
   text-align: center;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
 .feature-icon {
@@ -207,18 +251,9 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Services section */
 .services {
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
   background-color: var(--light);
-}
-
-.services-grid {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
 }
 
 .service-card {
@@ -226,59 +261,175 @@ body {
   border-radius: 15px;
   background: white;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease;
 }
-/* contact us */
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card h3 {
+  margin-bottom: 1rem;
+  color: var(--dark);
+}
+
+/* ==========================================================================
+   5. قسم معاينة تطبيق فيجما (Preview Section)
+   ========================================================================== */
+.preview-section {
+  width: 100%;
+  max-width: 1100px;
+  padding: 3rem;
+  background-color: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 1.5rem;
+  border: 1px solid #e5e7eb;
+  margin: 4rem auto;
+}
+
+.section-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.content-area {
+  max-width: 800px;
+  text-align: center;
+}
+
+.content-area h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.content-area p {
+  font-size: 1.125rem;
+  color: #4b5563;
+}
+
+.details-list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.detail-item svg {
+  height: 1.25rem;
+  width: 1.25rem;
+  color: var(--primary);
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+
+.button-area {
+  flex-shrink: 0;
+  width: 224px;
+}
+
+.preview-button {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border: none;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  background-color: var(--dark);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.preview-button:hover {
+  transform: scale(1.03);
+  background-color: #333333;
+}
+
+.preview-button svg {
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-left: 0.75rem;
+}
+
+/* ==========================================================================
+   6. قسم تواصل معنا (Contact Us Form)
+   ========================================================================== */
 .contact-section {
-  max-width: 1000px;
+  max-width: 800px;
   margin: 40px auto;
-  padding: 25px;
+  padding: 35px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .contact-section h2 {
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+  margin-bottom: 25px;
+  color: var(--dark);
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: 500;
+  margin-bottom: 8px;
+  font-weight: 600;
 }
 
 input, textarea, select {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 16px;
   resize: vertical;
-  font-family:  'Cairo', sans-serif;
+  font-family: 'Cairo', sans-serif;
+  background-color: #fafafa;
 }
 
-button {
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: #fff;
+}
+
+button[type="submit"] {
   width: 100%;
-  padding: 12px;
-  background-color: var(--primary);
+  padding: 14px;
+  background: var(--gold-gradient);
   color: #fff;
   font-size: 18px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: 0.3s;
-  font-family:  'Cairo', sans-serif;
+  font-weight: bold;
+  transition: opacity 0.3s;
+  font-family: 'Cairo', sans-serif;
 }
 
-button:hover {
-  background-color: var(--secondary);
+button[type="submit"]:hover {
+  opacity: 0.9;
 }
 
 .phone-input {
@@ -296,151 +447,15 @@ button:hover {
 
 #responseMsg {
   text-align: center;
-  margin-top: 10px;
-  font-weight: 500;
+  margin-top: 15px;
+  font-weight: 600;
 }
 
-/* preview section */
-
-        .preview-section {
-            width: 100%;
-            max-width: 1100px;
-            padding: 3rem;
-            background-color: #ffffff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 5px 10px rgba(0, 0, 0, 0.03);
-            border-radius: 1.5rem; /* Rounded corners */
-            border: 1px solid #e5e7eb;
-            margin: 0 auto;
-            margin-bottom: 40px; 
-        }
-
-        /* --- Flex Layout for Desktop --- */
-        .section-layout {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            
-        }
-
-        /* --- Text Content Area --- */
-        .content-area {
-            max-width: 800px;
-            text-align: center; /* Default text alignment for RTL */
-
-        }
-
-        .content-area h2 {
-            font-size: 2.25rem; /* 3xl */
-            font-weight: 900; /* Extrabold */
-            color: #1f2937; /* Gray 900 */
-            margin-bottom: 1rem;
-            line-height: 1.25;
-        }
-
-        .content-area p {
-            font-size: 1.125rem; /* lg */
-            color: #4b5563; /* Gray 600 */
-            margin-bottom: 0;
-        }
-
-        /* --- Responsive Details List --- */
-        .details-list {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap; /* Allow wrapping on small screens */
-            padding-right: 0;
-            list-style: none; /* Remove default list styles */
-            margin-bottom: 24px;
-        }
-
-        .detail-item {
-            display: flex;
-            align-items: center;
-            font-size: 0.875rem; /* sm */
-            color: #6b7280; /* Gray 500 */
-        }
-
-        .detail-item svg {
-            height: 1.25rem;
-            width: 1.25rem;
-            color: #4f46e5; /* Indigo 600 */
-            margin-left: 0.5rem; /* Space after the icon in RTL */
-            flex-shrink: 0;
-        }
-
-        /* --- Button Area --- */
-        .button-area {
-            flex-shrink: 0;
-            width: 224px; /* md:w-56 */
-        }
-
-        /* --- Button Style --- */
-        .preview-button {
-            display: inline-flex;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem 2rem;
-            border: none;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            border-radius: 0.75rem; /* Rounded xl */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            color: #ffffff;
-            background-color: var(--dark);
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .preview-button:hover {
-            transform: scale(1.03);
-            
-        }
-        
-        
-        .preview-button:focus {
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.5); /* Focus ring */
-        }
-
-        .preview-button svg {
-            height: 1.25rem;
-            width: 1.25rem;
-            margin-left: 0.75rem; /* Space after icon in RTL */
-            margin-right: -0.25rem; /* Slight negative margin for overlap */
-        }
-
-        /* --- Mobile Responsiveness (Screen size < 768px) --- */
-        @media (max-width: 768px) {
-            .preview-section {
-                padding: 2rem 1.5rem;
-            }
-
-            .section-layout {
-                flex-direction: column; /* Stack vertically on mobile */
-                gap: 2rem;
-            }
-            
-            .content-area h2 {
-                font-size: 1.875rem; /* 3xl on mobile */
-            }
-
-            .details-list {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
-
-            .button-area {
-                width: 100%; /* Full width button on mobile */
-            }
-        }
-
-/* CTA section */
+/* ==========================================================================
+   7. قسم تحميل التطبيق والفوتر (CTA & Footer)
+   ========================================================================== */
 .cta {
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
   background: var(--gold-gradient);
   color: white;
   text-align: center;
@@ -449,6 +464,11 @@ button:hover {
 .cta-content {
   max-width: 800px;
   margin: 0 auto;
+}
+
+.cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .app-buttons {
@@ -468,14 +488,14 @@ button:hover {
   text-decoration: none;
   border-radius: 30px;
   font-weight: bold;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .app-button:hover {
   transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-/* Footer */
 .footer {
   background-color: var(--dark);
   color: white;
@@ -484,151 +504,163 @@ button:hover {
 
 .footer-content {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
 }
 
 .footer-logo {
   font-size: 1.5rem;
   font-weight: bold;
   display: flex;
-  align-content: center;
+  align-items: center;
   gap: 10px;
+}
+
+.logo-img-footer {
+  height: 50px;
+  width: auto;
 }
 
 .footer-links a {
   color: white;
   text-decoration: none;
-  margin-right: 2rem;
+  margin-left: 2rem;
+  transition: color 0.3s;
 }
-.logo-img-footer{
-  height: 50px;
+
+.footer-links a:hover {
+  color: var(--primary);
 }
+
 .social-links a {
   color: white;
   font-size: 1.5rem;
-  margin-right: 1rem;
+  margin-left: 1rem;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: var(--primary);
 }
 
 .footer-bottom {
   text-align: center;
   padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+  color: #ccc;
 }
 
-/* Responsive design */
-
-/* Desktop XL (≥1200px) */
-@media (min-width: 1200px) {
-  .hero-section {
-    height: 570px; /* matches ~2:1 */
+/* ==========================================================================
+   8. التجاوب مع الشاشات (Responsive Design)
+   ========================================================================== */
+@media (max-width: 991px) {
+  .hero {
+    padding: 8rem 2rem 4rem;
+    gap: 2rem;
   }
-}
-
-/* Laptops (992px–1199px) */
-@media (max-width: 1199px) and (min-width: 992px) {
-  .hero-section {
-    height: 480px;
-  }
-}
-
-/* Tablets (768px–991px) */
-@media (max-width: 991px) and (min-width: 768px) {
-  .hero-section {
-    height: 360px;
-  }
-}
-
-/* Mobile L (576px–767px) */
-@media (max-width: 767px) and (min-width: 576px) {
-  .hero-section {
-    height: 270px;
-  }
-}
-
-/* Mobile S (<576px) */
-@media (max-width: 575px) {
-  .hero-section {
-    height: 220px; /* slightly smaller for compact screens */
+  .hero h1 {
+    font-size: 2.8rem;
   }
 }
 
 @media (max-width: 768px) {
-
-  .nav.active{
+  /* القائمة المتجاوبة للهواتف */
+  .menu-toggle img {
     display: block;
-    text-align: center;
-  
-    
   }
-  .nav-links.active > *{
-    border-top: 1px solid rgba(128, 128, 128, 0.500);
-    padding: 5px 0;
-    margin-top: 10px;
-    font-size: 18px;
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--dark);
+    flex-direction: column;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   }
+
   .nav-links.active {
     display: flex;
-    flex-direction: column;
   }
 
-  .menu-toggle img{
-    display: block;
+  .nav-links a {
+    margin: 1rem 0;
+    font-size: 1.2rem;
   }
-  
+
+  .nav-cta {
+    background: var(--primary);
+    color: white !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* الهيرو على الموبايل */
   .hero {
     flex-direction: column;
     text-align: center;
+    padding: 8rem 1.5rem 3rem;
   }
-  .hero-content p {
-    margin-bottom: 16px;
+
+  .hero-content {
+    margin-bottom: 3rem;
   }
 
   .hero h1 {
-    font-size: 2.5rem;
-  }
-  .button{
-    padding: .5rem 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .nav-links {
-    display: none;
-  }
-  
-  .features-grid,
-  .services-grid {
-    grid-template-columns: 1fr;
+    font-size: 2.3rem;
   }
 
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+  }
+
+  /* الفوتر والشبكات */
   .footer-content {
     flex-direction: column;
     gap: 2rem;
     text-align: center;
   }
 
-  .footer-links,
-  .social-links {
-    margin-top: 1rem;
+  .footer-links a, .social-links a {
+    margin: 0 1rem;
   }
 
-  .footer-links a,
-  .social-links a {
-    margin: 0 1rem;
+  .preview-section {
+    padding: 2rem 1.5rem;
+  }
+  
+  .details-list {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .button-area {
+    width: 100%;
   }
 }
 
-
 @media (max-width: 480px) {
+  .app-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .app-button {
+    width: 100%;
+    justify-content: center;
+  }
   .phone-input {
     flex-direction: column;
   }
-
-  .phone-input select,
-  .phone-input input {
+  .phone-input select, .phone-input input {
     width: 100%;
   }
 }
