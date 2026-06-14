@@ -111,11 +111,14 @@ body {
 /* ==========================================================================
    3. قسم الواجهة الرئيسية (Hero Section)
    ========================================================================== */
+/* ==========================================================================
+   3. قسم الواجهة الرئيسية المطور (Mergred Hero Section)
+   ========================================================================== */
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10rem 2rem 5rem; /* مساحة علوية كافية لعدم التداخل مع الهيدر */
+  padding: 10rem 2rem 5rem; 
   max-width: 1200px;
   margin: 0 auto;
   gap: 4rem;
@@ -170,13 +173,28 @@ body {
   box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
 }
 
-/* حاوية الصورة الفردية المصلحة لجيت هاب */
+/* حاوية الصورة الفردية - تم دمج فكرة الطبقة المظلمة هنا لحماية الرؤية */
 .hero-image {
   flex: 1;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 20px;
+  overflow: hidden; /* لمنع خروج الطبقة الشفافة عن الحواف */
+}
+
+/* إضافة تأثير التعتيم الشفاف الشبيه بـ linear-gradient فوق الصورة مباشرة */
+.hero-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.35)); /* تعتيم متدرج خفيف للحفاظ على ألوان التطبيق */
+  pointer-events: none; /* للسماح بالتفاعل مع العناصر خلفها */
+  z-index: 1;
 }
 
 .hero-image img {
@@ -185,9 +203,10 @@ body {
   height: auto;
   border-radius: 20px;
   object-fit: contain;
+  display: block;
 }
 
-/* كارت الأسعار العائم فوق الصورة بدقة */
+/* كارت الأسعار العائم - تم رفع الـ z-index ليظهر فوق التعتيم */
 .gold-stats {
   position: absolute;
   bottom: 20px;
@@ -199,7 +218,7 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
-  z-index: 2;
+  z-index: 2; /* يضمن ظهوره فوق طبقة التعتيم الشفافة */
 }
 
 .live-price {
@@ -207,7 +226,6 @@ body {
   font-weight: bold;
   color: var(--primary);
 }
-
 /* ==========================================================================
    4. قسم المميزات والخدمات (Features & Services)
    ========================================================================== */
