@@ -1,41 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dahaby - Live Gold Prices</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header class="header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo">Dahaby</a>
-            <div class="nav-links" id="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="prices.html" class="active">Gold Prices</a>
-                <a href="contact.html" class="nav-cta">Contact Us</a>
+        <div class="nav-parent">
+            <nav class="nav" id="nav">
+                <div class="logo">
+                    <img class="logo-img" src="images/white-logo.png" alt="Dahaby Logo">
+                    Dahaby
+                </div>
+                <div class="nav-links" id="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="prices.html" class="active">Gold Prices</a>
+                    <a href="contact.html" class="nav-cta">Contact Us</a>
+                </div>
+            </nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <img id="menu-icon" src="images/menu.png" alt="Menu">
             </div>
-            <button class="burger-menu" id="burger-menu">☰</button>
-        </nav>
+        </div>
     </header>
 
-    <main style="padding: 100px 20px; text-align: center;">
-        <h1>Live Gold Prices</h1>
-        <p style="margin-bottom: 40px;">Real-time market updates.</p>
+    <main class="prices-container" style="padding: 120px 20px; max-width: 1000px; margin: 0 auto;">
+        <h1 style="text-align: center; color: #d4af37;">Live Gold Prices & Analysis</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 40px;">Real-time market tracking from global exchanges.</p>
         
-        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-            <div style="border: 1px solid #ccc; padding: 20px; border-radius: 8px; width: 200px;">
-                <h3>Gold 24K</h3>
-                <p style="font-size: 1.5rem; font-weight: bold; color: #d4af37;">$65.50 / g</p>
+        <div style="display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px;">
+            <div class="price-card" style="border: 1px solid #e0e0e0; padding: 25px; border-radius: 12px; width: 260px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <h3 style="margin-bottom: 10px;">Gold 24K (Per Gram)</h3>
+                <p id="price-24k" style="font-size: 2rem; font-weight: bold; color: #d4af37;">Loading...</p>
             </div>
-            <div style="border: 1px solid #ccc; padding: 20px; border-radius: 8px; width: 200px;">
-                <h3>Gold 21K</h3>
-                <p style="font-size: 1.5rem; font-weight: bold; color: #d4af37;">$57.30 / g</p>
+            <div class="price-card" style="border: 1px solid #e0e0e0; padding: 25px; border-radius: 12px; width: 260px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <h3 style="margin-bottom: 10px;">Gold 21K (Per Gram)</h3>
+                <p id="price-21k" style="font-size: 2rem; font-weight: bold; color: #d4af37;">Loading...</p>
+            </div>
+        </div>
+
+        <div class="calculator-box" style="background: #fdfbf7; border: 1px solid #f1e4cf; padding: 30px; border-radius: 12px; max-width: 500px; margin: 0 auto;">
+            <h3 style="margin-bottom: 20px; text-align: center; color: #333;">Investment Estimator</h3>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <label>Weight (Grams):</label>
+                <input type="number" id="calc-weight" value="10" min="1" style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+                
+                <label>Purity Purity Grade:</label>
+                <select id="calc-purity" style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+                    <option value="24">24K Gold</option>
+                    <option value="21">21K Gold</option>
+                </select>
+
+                <button id="btn-calc" style="padding: 12px; background: #d4af37; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">Calculate Estimated Value</button>
+                <h4 id="calc-result" style="text-align: center; margin-top: 15px; font-size: 1.3rem; color: #222;">Total Cost: --</h4>
             </div>
         </div>
     </main>
 
-    <script type="module" src="./menu.js"></script>
+    <script type="module" src="scripts/menu.js"></script>
+    <script type="module" src="scripts/prices.js"></script>
 </body>
 </html>
