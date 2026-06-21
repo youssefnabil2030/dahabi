@@ -1,36 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dahaby - Contact Us</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <title>Dahaby - Contact Support</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header class="header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo">Dahaby</a>
-            <div class="nav-links" id="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="prices.html">Gold Prices</a>
-                <a href="contact.html" class="active nav-cta">Contact Us</a>
+        <div class="nav-parent">
+            <nav class="nav" id="nav">
+                <div class="logo">
+                    <img class="logo-img" src="images/white-logo.png" alt="Dahaby Logo">
+                    Dahaby
+                </div>
+                <div class="nav-links" id="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="prices.html">Gold Prices</a>
+                    <a href="contact.html" class="active nav-cta">Contact Us</a>
+                </div>
+            </nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <img id="menu-icon" src="images/menu.png" alt="Menu">
             </div>
-            <button class="burger-menu" id="burger-menu">☰</button>
-        </nav>
+        </div>
     </header>
 
-    <main style="padding: 100px 20px; text-align: center; max-width: 500px; margin: 0 auto;">
-        <h1>Contact Us</h1>
-        <form id="contactForm" style="display: flex; flex-direction: column; gap: 15px; margin-top: 30px;">
-            <input type="text" placeholder="Your Name" required style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-            <input type="email" placeholder="Your Email" required style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-            <textarea placeholder="Your Message" rows="5" required style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
-            <button type="submit" style="padding: 12px; background: #d4af37; color: white; border: none; border-radius: 5px; cursor: pointer;">Send Message</button>
+    <main class="contact-section" style="padding: 120px 20px; max-width: 600px; margin: 0 auto;">
+        <h2 style="text-align: center; color: #d4af37; margin-bottom: 10px;">Get In Touch With Experts</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">Have questions about setting up a wallet? Drop a message.</p>
+        
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Full Triple Name</label>
+                <input type="text" id="name" required placeholder="John Michael Doe">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required placeholder="name@domain.com">
+            </div>
+
+            <div class="form-group phone-group">
+                <label for="phone">Phone Number</label>
+                <div class="phone-input">
+                    <select id="countryCode">
+                        <option value="+1">US +1</option>
+                        <option value="+20" selected>EG +20</option>
+                        <option value="+44">GB +44</option>
+                        <option value="+971">AE +971</option>
+                    </select>
+                    <input type="tel" id="phone" required placeholder="1012345678">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" rows="4" placeholder="Write details here..." required></textarea>
+            </div>
+
+            <button type="submit" style="width:100%; padding:14px; background:#d4af37; border:none; color:white; border-radius:6px; cursor:pointer; font-weight:bold;">Submit Ticket</button>
+            <p id="responseMsg" style="text-align: center; margin-top: 15px; font-weight: bold;"></p>
         </form>
     </main>
 
-    <script type="module" src="./menu.js"></script>
-    <script type="module" src="./form.js"></script>
+    <script type="module" src="scripts/menu.js"></script>
+    <script type="module" src="scripts/form.js"></script>
 </body>
 </html>
