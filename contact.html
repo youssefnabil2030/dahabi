@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dahaby - Contact Us</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">Dahaby</a>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="prices.html">Gold Prices</a>
+                <a href="contact.html" class="active nav-cta">Contact Us</a>
+            </div>
+            <button class="burger-menu" id="burger-menu">☰</button>
+        </nav>
+    </header>
+
+    <main style="padding: 100px 20px; text-align: center; max-width: 500px; margin: 0 auto;">
+        <h1>Contact Us</h1>
+        <form id="contactForm" style="display: flex; flex-direction: column; gap: 15px; margin-top: 30px;">
+            <input type="text" placeholder="Your Name" required style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            <input type="email" placeholder="Your Email" required style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            <textarea placeholder="Your Message" rows="5" required style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+            <button type="submit" style="padding: 12px; background: #d4af37; color: white; border: none; border-radius: 5px; cursor: pointer;">Send Message</button>
+        </form>
+    </main>
+
+    <script type="module" src="./menu.js"></script>
+    <script type="module" src="./form.js"></script>
+</body>
+</html>
